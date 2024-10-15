@@ -1,0 +1,10 @@
+name: automated test
+run-name: AT
+on: push
+jobs:
+  math_test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "testing math.js"
+      - run: npm install
+      - run: npm test
