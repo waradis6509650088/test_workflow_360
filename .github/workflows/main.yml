@@ -6,5 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "testing math.js"
-      - run: npm install
+      - run: actions/checkout@v4
+      - run: actions/setup-node@v3
+        with:
+            node-version: "22"
+      - run: npm ci
       - run: npm test
