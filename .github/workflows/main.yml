@@ -1,7 +1,7 @@
 name: automated test
 on: [push, pull_request]
 jobs:
-  ubuntu:
+  math-test:
     runs-on: ubuntu-latest
     strategy:
         matrix:
