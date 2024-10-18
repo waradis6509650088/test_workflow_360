@@ -1,11 +1,7 @@
 name: automated test
-on:
-    push:
-        branches: main
-    pull_request:
-        branches: main
+on: [push, pull_request]
 jobs:
-  build:
+  ubuntu:
     runs-on: ubuntu-latest
     strategy:
         matrix:
@@ -20,3 +16,13 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+  centos:
+    runs-on: ubuntu-latest
+    container: 'centos:latest'
+    steps:
+        - run: cat /etc/*-release
+  debian:
+    runs-on: ubuntu-latest
+    container: 'debian:latest'
+    steps:
+        - run: cat /etc/*-release
