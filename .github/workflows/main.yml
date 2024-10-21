@@ -2,16 +2,15 @@ name: automated test
 on: [push, pull_request]
 jobs:
   math-test:
-    runs-on: ubuntu-latest
     strategy:
         matrix:
             node-version: [18.x, 20.x, 22.x]
-            distribution: ['ubuntu:latest', 'centos:latest', 'debian:latest']
-    container: ${{matrix.distribution}}
+            os: [ubuntu-latest, windows-latest]
+    runs-on: ${{matrix.os}}
     steps:
-      - run: echo "checking os info..."
-      - run: cat /etc/*-release
-      - uses: actions/checkout@v4
+      - name: Checkout ...
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
